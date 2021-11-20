@@ -1,0 +1,29 @@
+---
+devices:
+  router-1: # must match hostname configured on device
+    connections:
+      cli:
+        ip: 192.168.7.150
+        protocol: ssh
+    credentials:
+      default:
+        username: "%ENV{EVE_USER}"
+        password: "%ENV{EVE_PASS}"
+      enable:
+        password: "%ENV{EVE_PASS}"
+    os: ios
+    type: ios
+
+  switch-1: # must match hostname configured on device
+    connections:
+      cli:
+        ip: 192.168.7.151
+        protocol: ssh
+    credentials:
+      default:
+        username: "%ENV{EVE_USER}"
+        password: "%ENV{EVE_PASS}"
+      enable:
+        password: "%ENV{EVE_PASS}"
+    os: ios
+    type: ios

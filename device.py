@@ -1,6 +1,8 @@
 from pyats.topology import Device, Testbed, Interface
 from rich import inspect
 
+# Documentation: https://developer.cisco.com/docs/pyats/api/: Testbed & Topology Info -> Everything is an Object
+
 # Create and inspect Device object
 device1 = Device("router1")
 inspect(device1, methods=True)
