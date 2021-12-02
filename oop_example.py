@@ -1,18 +1,19 @@
-class Car():
+class Car:
     # Class-level
     wheels = 4
-    
+
     def __init__(self, manufacturer: str, model: str, color: str, mileage: int):
-    # Instance-level
+        # Instance-level
         self.manufacturer = manufacturer
         self.model = model
         self.color = color
         self.mileage = mileage
-        
+
     # Method
     def add_mileage(self, miles: int) -> str:
         self.mileage += miles
         print(f"The car has {miles} miles on it.")
+
 
 my_car = Car("Audi", "R8", "Blue", 1000)
 

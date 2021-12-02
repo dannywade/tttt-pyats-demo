@@ -1,6 +1,8 @@
 from scrapli.driver.core import IOSXEDriver
-from pprint import pprint
 from scrapli_inv import inv
+from rich import print
+from rich.pretty import Pretty, pprint
+from rich.panel import Panel
 
 """
 Script that uses Scrapli to connect and collect data from the device(s), and uses
@@ -26,12 +28,23 @@ def main():
         # Platform drivers will auto-magically handle disabling paging for you
         result = conn.send_command("show version")
 
+    # Print raw ouput
     print(result.result)
-    pprint(result.genie_parse_output())
+    # Parse output using Genie templates
+    genie_results = Pretty(result.genie_parse_output())
+    genie_panel = Panel.fit(
+        genie_results, title="[turquoise2]Genie Results[/turquoise2]"
+    )
+    print(genie_panel)
+
+    # Parse output using TextFSM templates
+    ntc_results = Pretty(result.textfsm_parse_output())
+    ntc_panel = Panel.fit(ntc_results, title="[red]NTC Results[/red]")
+    print(ntc_panel)
 
     # Parsing out the OS version
-    # device_version = result.genie_parse_output()
-    # print(device_version["version"]["os"])
+    device_version = result.genie_parse_output()
+    print(f"[yellow]Device OS Version[/yellow]: {device_version['version']['version']}")
 
 
 if __name__ == "__main__":

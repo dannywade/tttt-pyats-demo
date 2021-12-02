@@ -1,4 +1,8 @@
 import os
+from dotenv import load_dotenv
+
+# Load env vars found in .env file
+load_dotenv()
 
 eve_user = os.environ["EVE_USER"]
 eve_pass = os.environ["EVE_PASS"]
