@@ -27,7 +27,8 @@ r1 = testbed.devices["router-1"]
 # Connect to the router-1 device
 # By default, the following commands are usually ran:
 # no logging console, terminal width 511, and others depending on platform
-r1.connect(init_exec_commands=[], init_config_commands=[], log_stdout=False)
+r1.connect()
+# init_exec_commands=[], init_config_commands=[] - Disables default commands
 
 # Collect and parse 'show version' command from router-1 device
 # Using Rich library to pretty print output
